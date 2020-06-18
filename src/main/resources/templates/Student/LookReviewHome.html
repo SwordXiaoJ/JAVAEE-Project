@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>作业信息</title>
+    <link id="css" rel="stylesheet" type="text/css" href="/css/style.css"  />
+    <link href="static/ico/favicon.ico" rel="shortcut icon">
+
+
+
+</head>
+<body>
+
+<form th:action="@{/student/afterupdatehome}" method="post" role="from" class="smart-green">
+        <h1>作业信息
+            <span>批改后的作业信息</span>
+        </h1>
+    <label>
+        <span>&nbsp;</span>
+        <a href="/student/backtooperation">
+            <input type="button" class="button" value="返回操作界面"/>
+        </a>
+    </label>
+    <label>
+                <span>作业提交记录ID：&nbsp; &nbsp; &nbsp; </span>
+        <input id="id" type="text"  name="all_id"  class="error" disabled=true th:value="${update.id}"/>
+               
+                <div class="error-msg"></div>
+            </label>
+
+        <label>
+            <span>学生学号：</span>
+            <input id="s_id" type="text"  name="s_id"  class="error" disabled=true  th:value="${update.studentId}"/>
+            <div class="error-msg"></div>
+        </label>
+
+        <label>
+            <span>作业序号：</span>
+            <input id="h_id" type="text" name="h_id" disabled=true  th:value="${update.homeworkId}"/>
+            <div class="error-msg"></div>
+        </label>
+
+        <label>
+            <span>作业标题 :</span>
+            <input id="h_title" type="text"  name="h_title" disabled=true  th:value="${update.homeworkTitle}"/>
+            <div class="error-msg"></div>
+        </label>
+
+        <label>
+            <span>作业内容 :</span>
+            <textarea id="h_content" name="h_content" disabled=true  th:text="${update.homeworkContent}"></textarea>
+            <div class="error-msg"></div>
+        </label>
+       
+       
+        <label>
+            <span>作业批改意见 :</span>
+            <textarea id="h_review" name="h_review" disabled=true  th:text="${update.homeworkReview}"></textarea>
+            <div class="error-msg"></div>
+        </label>
+       
+</form>
+
+
+
+
+</body>
+</html>

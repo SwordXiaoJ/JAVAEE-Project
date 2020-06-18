@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>我的作业</title>
+    <script src="http://code.jquery.com/jquery-1.4.1.js"></script>
+    <link id="css" rel="stylesheet" type="text/css" href="/css/style.css"  />
+    <link href="static/ico/favicon.ico" rel="shortcut icon">
+</head>
+<body>
+<table align="center" width="960" border="1"
+       bgcolor="white" cellpadding="1" cellspacing="1">
+    <label>
+        <span>&nbsp;</span>
+        <a href="/student/backtooperation">
+            <input type="button" class="button" value="返回操作界面"/>
+        </a>
+    </label>
+    <thead>
+    <tr align="center" bgcolor="#7fffd4" height="50">
+        <td>ID</td>
+        <td>学生学号</td>
+        <td>作业编号</td>
+        <td>作业标题</td>
+        <td>作业内容</td>
+        <td>创建时间</td>
+        <td>更新时间</td>
+        <td>修改操作</td>
+        <td>作业状态</td>
+    </tr>
+    </thead>
+
+
+    <tr th:each="studenthomework,memberStat:${list}">
+        <td th:text="${studenthomework.id}"/>
+        <td th:text="${studenthomework.studentId}"/>
+        <td th:text="${studenthomework.homeworkId}"/>
+        <td th:text="${studenthomework.homeworkTitle}"/>
+        <td th:text="${studenthomework.homeworkContent}"/>
+        <td th:text="${studenthomework.createTime}"/>
+        <td th:text="${studenthomework.updateTime}"/>
+        <td align="center">
+            <a th:href="@{/student/updatehome(id=${studenthomework.id})}">修改</a>
+            <a th:href="@{/student/afterdeletehome(id=${studenthomework.id})}">删除</a>
+        </td>
+        <td th:switch = "${studenthomework.homeworkReview}">
+            <p th:case="'null'">未批改</p>
+            <p th:case="*"><a th:href="@{/student/lookreviewhome(id=${studenthomework.id})}">查看批改</a></p>
+        </td>
+<!--        <td><a th:href="">修改</a></td>-->
+    </tr>
+</table>
+
+</body>
+</html>
